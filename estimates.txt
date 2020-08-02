@@ -1,0 +1,13 @@
+Minimum RTO for a single AZ outage
+From this site, https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html RDS Multi-AZ failover takes around 60-120 seconds.
+
+Minimum RTO for a single region outage
+In this case, manual user intervention is needed to promote the read replica on the other region as the new master DB. The RTO can take the least minimum of 10 minutes to an hour, depending on the team's availability and how fast the application redeploys to point to the DB.
+
+Minimum RPO for a single AZ outage
+RDS uses synchronous replication for Multi-AZ Deployment so that no data loss will happen. The RPO will be 0.
+
+Minimum RPO for a single region outage
+With asynchronous read replication, there can be a replication lag between master and read replica. If the region is far, latency can make the replication slower also.
+RPO also depends on the application behavior when the master DB is down because it fails fast and trigger alert or keep woking without updating the DB.
+The RPO depends on how the read replica captures the latest changes on master DB. It can range from a sub-seconds to minutes.

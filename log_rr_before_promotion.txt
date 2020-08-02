@@ -1,0 +1,40 @@
+[ec2-user@ip-192-169-1-182 ~]$ mysql -h udacity-mysql-02-region-replica.c9btc87w0zgx.ap-southeast-2.rds.amazonaws.com -u malamsyah -P 3
+306 -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 91
+Server version: 8.0.17 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| udacity            |
++--------------------+
+4 rows in set (0.01 sec)
+
+MySQL [(none)]> use udacity;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [udacity]> insert into sample_table values ('New Random Name');
+ERROR 1290 (HY000): The MySQL server is running with the --read-only option so it cannot execute this statement
+MySQL [udacity]> select * from sample_table;
++---------------+
+| name          |
++---------------+
+| Random Name 1 |
+| Random Name 2 |
+| Random Name 3 |
++---------------+
+3 rows in set (0.00 sec)
+
+MySQL [udacity]>

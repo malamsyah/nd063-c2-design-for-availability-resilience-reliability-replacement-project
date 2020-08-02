@@ -1,0 +1,46 @@
+1. Install mysql
+	[ec2-user@ip-192-168-2-107 ~]$ sudo yum install mysql
+
+2. Login to mysql
+	[ec2-user@ip-192-168-2-107 ~]$ mysql -h udacity-mysql-02.ckwoqgtflhav.ap-southeast-1.rds.amazonaws.com -u malamsyah -P 3306 -p
+
+3. Show Databases
+	MySQL [(none)]> show databases;
+	+--------------------+
+	| Database           |
+	+--------------------+
+	| information_schema |
+	| mysql              |
+	| performance_schema |
+	| udacity            |
+	+--------------------+
+	4 rows in set (0.01 sec)
+
+4. use udacity DB
+	MySQL [(none)]> use udacity;
+	Database changed
+
+5. Create table, insert and show data
+	MySQL [udacity]> create table sample_table (name VARCHAR(20));
+	Query OK, 0 rows affected (0.07 sec)
+
+	MySQL [udacity]> insert into sample_table values ('Random Name 1');
+	Query OK, 1 row affected (0.01 sec)
+
+	MySQL [udacity]> insert into sample_table values ('Random Name 2');
+	Query OK, 1 row affected (0.01 sec)
+
+	MySQL [udacity]> insert into sample_table values ('Random Name 3');
+	Query OK, 1 row affected (0.01 sec)
+
+	MySQL [udacity]> select * from sample_table;
+	+---------------+
+	| name          |
+	+---------------+
+	| Random Name 1 |
+	| Random Name 2 |
+	| Random Name 3 |
+	+---------------+
+	3 rows in set (0.00 sec)
+
+	MySQL [udacity]>
